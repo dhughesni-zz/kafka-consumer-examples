@@ -4,7 +4,7 @@ print("Start: basic-python-consumer")
 
 props = {
     'bootstrap.servers': 'localhost:9092',
-    'group.id': 'basic-python-consumer3',
+    'group.id': 'basic-python-consumer',
     'auto.offset.reset': 'earliest'
 }
 
