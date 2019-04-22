@@ -14,7 +14,7 @@ $ ./confluent-5.2.1/bin/confluent destroy
 $ ./confluent-5.2.1/bin/confluent start
 ```
 
-<!-- # BASIC-JAVA-CONSUMER
+# BASIC-JAVA-CONSUMER
 ## Project Setup: basic-java-consumer
 ```
 $ mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=com.dh.app -DartifactId=basic-java-consumer
@@ -23,7 +23,7 @@ $ mvn -B archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Dgro
 ## To Run: basic-java-consumer
 ```
 kafka-consumer-example/basic-java-consumer $ mvn clean compile exec:java -Dexec.mainClass="com.dh.app.App"
-``` -->
+```
 
 ---
 
