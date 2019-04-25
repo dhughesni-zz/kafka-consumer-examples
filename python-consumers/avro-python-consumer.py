@@ -24,7 +24,7 @@ consumer.subscribe(['avro-python-producer-topic'])
 
 # connect to the schema_registry
 schema_registry = CachedSchemaRegistryClient("http://localhost:8081")
-# define avro serde - to be used to encode msg value against the avro schema
+# define avro serde - to be used to decode msg value against the avro schema
 avro_serde = MessageSerializer(schema_registry)
 
 while True:
