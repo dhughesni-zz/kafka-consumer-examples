@@ -9,11 +9,12 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class BasicConsumer {
+	
+    public static void main( String[] args ) {
+    	
         System.out.println("Start: basic-java-consumer");
+        
         Properties settings = new Properties();
         settings.put(ConsumerConfig.GROUP_ID_CONFIG, "basic-java-consumer");
         settings.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -24,18 +25,20 @@ public class App
         settings.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(settings);
+        String topic = "basic-java-producer-topic";
+        consumer.subscribe(Arrays.asList(topic));
+        
         try {
-            consumer.subscribe(Arrays.asList("basic-java-producer-topic"));
-
             while (true) {
                 ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-                for (ConsumerRecord<String, String> record : records)
+                for (ConsumerRecord<String, String> record : records) {
                     System.out.printf("Consumed: offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());
+                }
             }
         }
         finally {
-                consumer.close();
-                System.out.println("End: basic-java-consumer");
+        	consumer.close();
+            System.out.println("End: basic-java-consumer");
         } 
     }
 }
